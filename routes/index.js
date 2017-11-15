@@ -5,16 +5,15 @@ const User = require('../models/User');
 const Wallet = require('../models/Wallet');
 //const creds = require('../creds');
 
-router.get('/', (req, res, next)=> {
+rrouter.get('/', function (req, res, next) {
   User
-    .find({},(err, users)=>{
+    .find({}, function (err, users) {
       if (err) 
         throw err;
       Wallet
         .find({})
         .sort('-balance')
         .exec(function (err, wallets) {
-        .find({}, (err, wallets)=> {
           if (err) 
             throw err;
           res.render('index', {
@@ -23,9 +22,8 @@ router.get('/', (req, res, next)=> {
           })
         })
     })
-})  
+  })
   
-
 router.post('/', (req, res, next) => {
   const {firstname, lastname, username} = req.body;
 
